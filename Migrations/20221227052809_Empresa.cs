@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmpresaApp.Migrations
 {
-    public partial class Init : Migration
+    public partial class Empresa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,8 @@ namespace EmpresaApp.Migrations
                 name: "Empresas",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Nome = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,14 +25,14 @@ namespace EmpresaApp.Migrations
                 name: "Transactions",
                 columns: table => new
                 {
-                    TransactionId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    TransactionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     AccountNumber = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     BeneficiaryName = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     BankName = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     SWIFTCode = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
-                    Amount = table.Column<int>(type: "INTEGER", nullable: false),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Amount = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
