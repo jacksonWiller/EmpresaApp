@@ -20,7 +20,8 @@ public class Startup{
         services.AddControllersWithViews();
        
        services.AddDbContext<DataContext>(
-                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
+                //context => context.UseSqlite(Configuration.GetConnectionString("Default"))
+                context => context.UseSqlServer(Configuration.GetConnectionString("DevConnection"))
             );
        services.AddRazorPages();
 
