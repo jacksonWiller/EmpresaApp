@@ -1,3 +1,6 @@
+using EmpresaApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace EmpresaApp;
 
 public class Startup{
@@ -11,7 +14,10 @@ public class Startup{
 
     public void ConfigurationService(IServiceCollection services)
     {
-
+       
+       services.AddDbContext<EmpresaContext>(
+                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
+            );
        services.AddRazorPages();
 
     }
