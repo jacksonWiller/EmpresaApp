@@ -1,6 +1,9 @@
 // using EmpresaApp.Data;
 // using Microsoft.EntityFrameworkCore;
 
+using EmpresaApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace EmpresaApp;
 
 public class Startup{
@@ -14,10 +17,11 @@ public class Startup{
 
     public void ConfigurationService(IServiceCollection services)
     {
+        services.AddControllersWithViews();
        
-    //    services.AddDbContext<EmpresaContext>(
-    //             context => context.UseSqlite(Configuration.GetConnectionString("Default"))
-    //         );
+       services.AddDbContext<DataContext>(
+                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
+            );
        services.AddRazorPages();
 
     }
@@ -45,7 +49,7 @@ public class Startup{
 
         app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Transaction}/{action=Index}/{id?}");
 
         app.Run();
     }
