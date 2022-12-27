@@ -1,5 +1,5 @@
-using EmpresaApp.Data;
-using Microsoft.EntityFrameworkCore;
+// using EmpresaApp.Data;
+// using Microsoft.EntityFrameworkCore;
 
 namespace EmpresaApp;
 
@@ -15,9 +15,9 @@ public class Startup{
     public void ConfigurationService(IServiceCollection services)
     {
        
-       services.AddDbContext<EmpresaContext>(
-                context => context.UseSqlite(Configuration.GetConnectionString("Default"))
-            );
+    //    services.AddDbContext<EmpresaContext>(
+    //             context => context.UseSqlite(Configuration.GetConnectionString("Default"))
+    //         );
        services.AddRazorPages();
 
     }
@@ -32,6 +32,8 @@ public class Startup{
             app.UseHsts();
         }
 
+        
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
@@ -40,6 +42,10 @@ public class Startup{
         app.UseAuthorization();
 
         app.MapRazorPages();
+
+        app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 
         app.Run();
     }
