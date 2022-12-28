@@ -50,7 +50,7 @@ public class Startup{
 
         app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Transaction}/{action=Index}/{id?}");
+        pattern: "{controller=Empresa}/{action=Index}/{id?}");
 
         app.Run();
     }
