@@ -6,7 +6,7 @@ namespace EmpresaApp.Models
 {
     public class Transaction
     {
-        [Key]
+       [Key] 
         public int TransactionId { get; set; }
 
         [Column(TypeName ="nvarchar(12)")]

@@ -1,0 +1,58 @@
+﻿@model EmpresaApp.Models.Funcionario
+
+@{
+    ViewData["Title"] = "Transaction";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Adicionar Fucionarios</h1>
+        <form asp-action="AddFuncionario" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <asp:DropDownList id="Cargo" Runat="Server">
+                <asp:ListItem Text="Item 1" Value="1"/>
+                <asp:ListItem Text="Item 2" Value="2"/>
+                <asp:ListItem Text="Item 3" Value="3"/>
+                <asp:ListItem Text="Item 4" Value="4"/>
+                <asp:ListItem Text="Item 5" Value="5"/>
+            </asp:DropDownList>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Salario" class="control-label"></label>
+                        <input asp-for="Salario" class="form-control" />
+                        <span asp-validation-for="Salario" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary  w-100">View All</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

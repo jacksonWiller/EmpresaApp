@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EmpresaApp.Models.Empresa>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h1>Empresa</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cep)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumeroResidencial)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ComplementoEndereco)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th>
+                        <a asp-action="Add" class="btn btn-sm btn-success">
+                            <i class="fa-solid fa-plus"></i> Novo
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroResidencial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ComplementoEndereco)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@item.Id">
+                                <div class="btn-group btn-group-sm">
+                                    <a asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-warning">
+                                        Detalhes/Editar
+                                    </a>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure to delete this record?')">
+                                        Remover
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
